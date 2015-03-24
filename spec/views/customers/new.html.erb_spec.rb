@@ -12,7 +12,7 @@ describe "customers/new" do
       :state => "MyString",
       :zip => 1,
       :h_phone => "MyString",
-      :C_phone => "MyString",
+      :c_phone => "MyString",
       :email => "MyString"
     ).as_new_record)
   end
@@ -31,7 +31,7 @@ describe "customers/new" do
       assert_select "input#customer_state[name=?]", "customer[state]"
       assert_select "input#customer_zip[name=?]", "customer[zip]"
       assert_select "input#customer_h_phone[name=?]", "customer[h_phone]"
-      assert_select "input#customer_C_phone[name=?]", "customer[C_phone]"
+      assert_select "input#customer_c_phone[name=?]", "customer[c_phone]"
       assert_select "input#customer_email[name=?]", "customer[email]"
     end
   end

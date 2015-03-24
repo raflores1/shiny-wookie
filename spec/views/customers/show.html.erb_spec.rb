@@ -12,7 +12,7 @@ describe "customers/show" do
       :state => "State",
       :zip => 2,
       :h_phone => "H Phone",
-      :C_phone => "C Phone",
+      :c_phone => "C Phone",
       :email => "Email"
     ))
   end

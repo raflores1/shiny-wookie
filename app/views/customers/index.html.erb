@@ -22,7 +22,7 @@
 
   <tbody>
     <% @customers.each do |customer| %>
-      <tr>
+      <tr id="<%= dom_id(customer) %>">
         <td><%= customer.cust_id %></td>
         <td><%= customer.first_name %></td>
         <td><%= customer.last_name %></td>
@@ -32,7 +32,7 @@
         <td><%= customer.state %></td>
         <td><%= customer.zip %></td>
         <td><%= customer.h_phone %></td>
-        <td><%= customer.C_phone %></td>
+        <td><%= customer.c_phone %></td>
         <td><%= customer.email %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
