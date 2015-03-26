@@ -1,4 +1,5 @@
 class Customer < ActiveRecord::Base
+	has_many :vehicles
 	validates :first_name, presence: true
 	validates :last_name, presence: true
 	validates :h_phone, presence: true

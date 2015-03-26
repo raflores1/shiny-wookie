@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324150546) do
+ActiveRecord::Schema.define(version: 20150326154543) do
 
   create_table "customers", force: :cascade do |t|
-    t.integer  "cust_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "addr1"
@@ -25,8 +24,22 @@ ActiveRecord::Schema.define(version: 20150324150546) do
     t.string   "h_phone"
     t.string   "c_phone"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "{:index=>true}_id"
   end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "vin"
+    t.string   "manufacturer"
+    t.string   "year"
+    t.string   "model"
+    t.string   "trim"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "customer_id"
+  end
+
+  add_index "vehicles", ["customer_id"], name: "index_vehicles_on_customer_id"
 
 end
