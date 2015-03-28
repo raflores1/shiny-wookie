@@ -1,70 +1,57 @@
 class VehiclesController < ApplicationController
- 
- before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
-	
 
-	def index
-    	@vehicles = Vehicle.find(params[:customer_id])
-	end
+  before_action :find_customer
+  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 
-	def show
-	end
+  def index
+    @vehicles = @customer.vehicles
+  end
 
-	def new
-    	@vehicle = Vehicle.new
-  	end
+  def show
+  end
 
-  	def edit
-  	end
+  def new
+    @vehicle = @customer.vehicles.new
+  end
 
-  	def create
-    	@vehicle = Vehicle.new(vehicle_params)
+  def edit
+  end
 
-    	respond_to do |format|
-     	 if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
-        format.json { render :show, status: :created, location: @vehicle }
-     	 else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      	end
-    	end
-  	end
+  def create
+    @vehicle = @customer.vehicles.new(vehicle_params)
 
-	def update
-    	respond_to do |format|
-      		if @vehicle.update(vehicle_params)
-       			format.html { redirect_to @vehicle, notice: 'Customer was successfully updated.' }
-        		format.json { render :show, status: :ok, location: @vehicle }
-      		else
-        		format.html { render :edit }
-        		format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-      		end
-    	end
-  	end
+    if @vehicle.save
+      redirect_to customer_vehicles_path, notice: 'Vehicle was successfully created.'
+    else
+      render :new
+    end
+  end
 
-	def destroy
-    	@vehicle.destroy
-    	respond_to do |format|
-      		format.html { redirect_to vehicles_url, notice: 'Customer was successfully destroyed.' }
-      		format.json { head :no_content }
-    	end
-  	end
+  def update
+    if @vehicle.update(vehicle_params)
+      redirect_to customer_vehicles_path, notice: 'Vehicle was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @vehicle.destroy
+    redirect_to customer_vehicles_path, notice: 'Vehicle was successfully destroyed.'
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vehicle
+    @vehicle = @customer.vehicles.find(params[:id])
+  end
+
+  def find_customer
+    @customer = Customer.find(params[:customer_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def vehicle_params
+    params.require(:vehicle).permit(:vin, :manufacturer, :year, :model, :trim)
+  end
 end
-
-
-
-
-
-
-
-private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vehicle
-      @vehicle = Vehicle.find(params[:customer_id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def vehicle_params
-      params.require(:vehicle).permit(:vin, :manufacturer, :year, :model, :trim, :customer_id)
-    end
