@@ -23,7 +23,7 @@ describe CustomersController do
   # This should return the minimal set of attributes required to create a valid
   # Customer. As you add validations to Customer, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "cust_id" => "1", "first_name" => "Rafael", "last_name" => "Flores", "addr1" => "Finca Elena",
+  let(:valid_attributes) { {"first_name" => "Rafael", "last_name" => "Flores", "addr1" => "Finca Elena",
                               "addr2" => "32 Calle Jobos", "city" => "Guaynabo", "state" => "PR", "zip" => "00971",
                               "h_phone" => "7872874630", "c_phone" => "7875258367", "email" => "raflores1@me.com"} }
 
@@ -108,8 +108,8 @@ describe CustomersController do
         # specifies that the Customer created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Customer.any_instance.should_receive(:update).with({ "cust_id" => "1" })
-        put :update, {:id => customer.to_param, :customer => { "cust_id" => "1" }}, valid_session
+        Customer.any_instance.should_receive(:update).with({ "id" => "1" })
+        put :update, {:id => customer.to_param, :customer => { "id" => "1" }}, valid_session
       end
 
       it "assigns the requested customer as @customer" do

@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "customers/show" do
   before(:each) do
     @customer = assign(:customer, stub_model(Customer,
-      :cust_id => 1,
       :first_name => "First Name",
       :last_name => "Last Name",
       :addr1 => "Addr1",
@@ -20,7 +19,6 @@ describe "customers/show" do
   it "renders attributes in <p>" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/1/)
     rendered.should match(/First Name/)
     rendered.should match(/Last Name/)
     rendered.should match(/Addr1/)

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :customers
+  resources :customers do
+    resources :vehicles
+  end
+
+
   root 'customers#index'
 
 
