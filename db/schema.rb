@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20150328075054) do
     t.string   "year"
     t.string   "model"
     t.string   "trim"
-    t.integer  "customer_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "customer_id"
   end
 
   add_index "vehicles", ["customer_id"], name: "index_vehicles_on_customer_id"
