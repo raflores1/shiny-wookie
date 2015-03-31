@@ -1,0 +1,31 @@
+<h1> Vehicle Information </h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vin number:</strong>
+  <%= @vehicle.vin %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @vehicle.manufacturer %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @vehicle.year %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @vehicle.model %>
+</p>
+
+<p>
+  <strong>Trim</strong>
+  <%= @vehicle.trim %>
+</p>
+
+
+<%=link_to 'Edit', edit_customer_vehicle_path(@customer, @vehicle)%>
+<%=link_to 'Back', customer_vehicles_path(@customer, @vehicle) %>

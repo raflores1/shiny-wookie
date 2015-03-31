@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1> Vehicle List </h1>
+<h1><%= (@customer.first_name) + (' ') + (@customer.last_name)+ ("'s ") + ('Vehicles')%></h1>
 
 <table>
   <thead>
@@ -18,12 +18,15 @@
 
   	<% @vehicles.each do |vehicle| %>
   	<tr>
+      <tr id="<%= dom_id(vehicle) %>">
         <td><%= vehicle.vin %></td>
         <td><%= vehicle.manufacturer %></td>
         <td><%= vehicle.year %></td>
         <td><%= vehicle.model %></td>
         <td><%= vehicle.trim%></td>
-        <td><%= link_to 'Destroy', customer_vehicle_path(@customer, vehicle), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', customer_vehicle_path(@customer, vehicle) %></td>
+        <td><%= link_to 'Edit', edit_customer_vehicle_path(@customer, vehicle) %></td>
+        <td><%= link_to 'Destroy', customer_vehicle_path(@customer, vehicle), method: :delete, data: { confirm: 'Are you sure?' }%></td>
     </tr>
 	<% end %>
 </tbody>
