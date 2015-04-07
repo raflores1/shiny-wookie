@@ -14,6 +14,10 @@ class VehiclesController < ApplicationController
     @vehicle = @customer.vehicles.new
   end
 
+
+  def show
+  end
+
   def edit
   end
 

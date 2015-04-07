@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :labors, :products, :categories
+
   resources :customers do
     resources :vehicles
   end

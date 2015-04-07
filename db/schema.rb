@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328075054) do
+ActiveRecord::Schema.define(version: 20150402133756) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
@@ -27,6 +33,32 @@ ActiveRecord::Schema.define(version: 20150328075054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "labors", force: :cascade do |t|
+    t.string   "system"
+    t.string   "description"
+    t.string   "unit"
+    t.decimal  "rate_a"
+    t.decimal  "rate_b"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "product_no"
+    t.string   "product_sku"
+    t.string   "product_desc"
+    t.string   "vendor"
+    t.string   "category"
+    t.decimal  "cost"
+    t.decimal  "price"
+    t.integer  "qty"
+    t.integer  "category_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id"
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "vin"

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Listing Labors</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Description</th>
+      <th>Unit</th>
+      <th>Rate a</th>
+      <th>Rate b</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @labors.each do |labor| %>
+      <tr>
+        <td><%= labor.system %></td>
+        <td><%= labor.description %></td>
+        <td><%= labor.unit %></td>
+        <td><%= labor.rate_a %></td>
+        <td><%= labor.rate_b %></td>
+        <td><%= link_to 'Show', labor %></td>
+        <td><%= link_to 'Edit', edit_labor_path(labor) %></td>
+        <td><%= link_to 'Destroy', labor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Labor', new_labor_path %>

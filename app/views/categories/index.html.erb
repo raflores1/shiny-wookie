@@ -1,0 +1,19 @@
+<h3>Browse categories</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr id="<%= dom_id(category) %>">
+        <td><%= category.category %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Create Category', new_category_path(@category) %>

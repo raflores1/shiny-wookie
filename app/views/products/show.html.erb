@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<h3>Product view</h3>
+
+<p>
+  <strong>Product no:</strong>
+  <%= @product.product_no %>
+</p>
+<p>
+<strong>Product sku:</strong>
+  <%= @product.product_sku %>
+</p>
+<p>
+<strong>Description:</strong>
+  <%= @product.product_desc %>
+</p>
+<p>
+<strong>Vendor:</strong>
+  <%= @product.vendor %>
+</p>
+<p>
+<strong>Category:</strong>
+  <%= @product.category.category%>
+</p>
+
+<p>
+<strong>Cost:</strong>
+  <%= @product.cost%>
+</p>
+<p>
+<strong>Price:</strong>
+  <%= @product.price%>
+</p>
+<p>
+<strong>Quantity:</strong>
+  <%= @product.qty%>
+</p>
+
+
+<%= link_to 'Back', products_path() %>
+
