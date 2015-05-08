@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 <h3>Estimate for:</h3>
-<h4><%= @estimate.customer.first_name + " " + @estimate.customer.last_name %></h4>
+<p> Customer: <%= @estimate.customer.first_name + " " + @estimate.customer.last_name %></p>
+<p><strong>Address:</strong></p>
+<p><%= @estimate.customer.addr1%></p>
+<p><%= @estimate.customer.city + ", " + @estimate.customer.state + " " + @estimate.customer.zip%></p>
+<p><strong>Phone/Email:</strong>
+<p><%=@estimate.customer.h_phone + " / " + @estimate.customer.email%></p>
+<p><strong>Vehicle:</strong>
+<p><%= @estimate.vehicle.model + " " + @estimate.vehicle.trim %></p>
+
 
 <table>
   <thead>
