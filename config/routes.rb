@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  resources :labors, :products, :categories
+  
+  resources :labors, :products, :categories, :employees
 
+  resources :estimates do
+    resources :lines_in_estimates
+  end
+  
   resources :customers do
     resources :vehicles
   end
 
 
-  root 'customers#index'
+  root 'estimates#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

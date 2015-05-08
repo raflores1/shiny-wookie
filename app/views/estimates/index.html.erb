@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h3>List of estimates</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Estimate number</th>
+      <th>Customer name</th>
+      <th>Vehicle Model</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  	<tbody>
+    	<% @estimates.each do |estimate| %>
+      	<tr id="<%= dom_id(estimate) %>">
+        	<td><%= estimate.id %></td>
+        	<td><%= link_to "#{estimate.customer.first_name}" + " " + "#{estimate.customer.last_name}", estimate %></td>
+        	<td><%= estimate.vehicle.model %></td>
+        	<td><%= estimate.customer.h_phone %></td>
+        	<td><%=estimate.customer.email %></td>
+        	<td></td>
+        <%end%>
+	</tbody>
+</table>
+
+
+<%= link_to "Create New Estimate", new_estimate_path %> 

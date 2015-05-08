@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<h3>Estimate for:</h3>
+<h4><%= @estimate.customer.first_name + " " + @estimate.customer.last_name %></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Extended</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lines_in_estimates.each do |lines_in_estimate| %>
+      <tr id="<%= dom_id(lines_in_estimate) %>">
+        <td><%= lines_in_estimate.qty %></td>
+        <td><%= lines_in_estimate.product.product_desc%></td>
+        <td><%= lines_in_estimate.product.price %></td>
+        <td><%= lines_in_estimate.extended %></td>
+        <td><%= link_to 'Delete', estimate_lines_in_estimate_path(@estimate, lines_in_estimate), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Item', new_estimate_lines_in_estimate_path %>
+
+<h5>Subtotal:</h5>
+<%=@estimate.subtotal%><br>
+<h5>State Tax:</h5>
+<%=@estimate.statetax%>
+<h5>Mun Tax:</h5>
+<%=@estimate.muntax %>
+<h5>Total:</h5>
+<%=@estimate.total %><br>
+
+<%=link_to 'Back', '/estimates' %>

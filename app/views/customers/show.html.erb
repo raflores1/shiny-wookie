@@ -50,5 +50,7 @@
   <%= @customer.email %>
 </p>
 
+
+<td><%= link_to 'List Vehicles', customer_vehicles_path(@customer) %></td>
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path() %>

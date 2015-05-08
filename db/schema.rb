@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402133756) do
+ActiveRecord::Schema.define(version: 20150429232736) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "category"
@@ -34,6 +34,39 @@ ActiveRecord::Schema.define(version: 20150402133756) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "employees", force: :cascade do |t|
+    t.string   "firstname"
+    t.string   "middlename"
+    t.string   "lastname"
+    t.string   "address"
+    t.string   "city"
+    t.string   "zipcode"
+    t.string   "state"
+    t.string   "homephone"
+    t.string   "mobilephone"
+    t.string   "email"
+    t.string   "auth"
+    t.decimal  "wage"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "estimates", force: :cascade do |t|
+    t.decimal  "statetax"
+    t.decimal  "muntax"
+    t.decimal  "subtotal"
+    t.decimal  "total"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "customer_id"
+    t.integer  "vehicle_id"
+    t.integer  "employee_id"
+  end
+
+  add_index "estimates", ["customer_id"], name: "index_estimates_on_customer_id"
+  add_index "estimates", ["employee_id"], name: "index_estimates_on_employee_id"
+  add_index "estimates", ["vehicle_id"], name: "index_estimates_on_vehicle_id"
+
   create_table "labors", force: :cascade do |t|
     t.string   "system"
     t.string   "description"
@@ -43,6 +76,19 @@ ActiveRecord::Schema.define(version: 20150402133756) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "lines_in_estimates", force: :cascade do |t|
+    t.decimal  "qty"
+    t.string   "description"
+    t.decimal  "extended"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "estimate_id"
+    t.integer  "product_id"
+  end
+
+  add_index "lines_in_estimates", ["estimate_id"], name: "index_lines_in_estimates_on_estimate_id"
+  add_index "lines_in_estimates", ["product_id"], name: "index_lines_in_estimates_on_product_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "product_no"

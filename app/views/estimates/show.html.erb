@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Estimate</h3>
+<p>
+	<strong>Customer Name:</strong><br>
+	<%=@estimate.customer.first_name + " " + @estimate.customer.last_name %>
+</p>
+
+<p>
+	<strong>Address:</strong><br>
+	<%=@estimate.customer.addr1%><br>
+	<%=@estimate.customer.addr2%><br>
+	<%=@estimate.customer.city +  " " + @estimate.customer.state + " " + @estimate.customer.zip %>
+</p>
+
+<p>
+	<strong>Vehicle:</strong><br>
+	<%=@estimate.vehicle.manufacturer + " " + @estimate.vehicle.model + " " + @estimate.vehicle.year %>
+</p>
+
+<p>
+	<strong>Amount:</strong>
+	<%=@estimate.total%>
+</p>
+
+
+<%= link_to 'Detail', estimate_lines_in_estimates_path(@estimate) %>
+<%= link_to 'Delete', @estimate, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+

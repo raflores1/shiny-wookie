@@ -28,7 +28,6 @@
   </div>
   <div class="field">
     <%=f.label :Category %><br>
-    <%= options_from_collection_for_select(Category.all, :id, :category) %>
     <%= collection_select(:product, :category_id, Category.all, :id, :category) %>
   </div>
   <div class="field">

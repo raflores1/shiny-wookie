@@ -23,7 +23,7 @@ it "navigates to the page view products when click link view product it display 
 	within "#product_#{product.id}" do
 		click_link "View"
 	end
-	within "h1" do
+	within ('h3') do
 		expect(page).to have_content "Product view"
 	end
 	expect(page).to have_content "Mop Auto Parts"
@@ -31,16 +31,13 @@ it "navigates to the page view products when click link view product it display 
 end
 
 it "navigates to edit page when hit the edit link" do
-visit "/products"
-expect(page).to have_content("Alternador")
-within "#product_#{product.id}" do
-	click_link "Edit"
-end
-within ("h1") do
- expect(page).to have_content "Product edit"
-end
-expect(page).to have_content("Alternador")
-expect(page).to have_content("89987656788998")
+	visit "/products"
+		within "#product_#{product.id}" do
+			click_link "Edit"
+		end
+	within ("h3") do
+ 		expect(page).to have_content "Product edit"
+	end
 
 end
 

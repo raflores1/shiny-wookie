@@ -1,0 +1,34 @@
+<%= form_for(@estimate) do |f| %>
+  
+  <% if @estimate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estimate.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% @estimate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_id %>
+    <%= f.collection_select(:customer_id, Customer.order(:first_name), :id, :first_name_and_last_name, prompt: true ) %>
+  </div>
+
+  <div class = "field">
+    <%= f.label :vehicle_id %>
+    <%= f.grouped_collection_select(:vehicle_id, Customer.order(:first_name), :vehicles, :first_name_and_last_name, :id, :model, prompt: true) %>
+</div>
+<div class = "field">
+    <%= f.label :employee_id %>
+    <%= f.collection_select(:employee_id, Employee.order(:firstname), :id, :firstname_and_lastname,  prompt: true) %>
+    
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+
+
+  

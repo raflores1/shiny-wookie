@@ -14,7 +14,7 @@ let!(:customer) { Customer.create(first_name: "Rafael", last_name: "Flores", add
 
 		it "directs you to the vehicle index page" do
 			visit_customer_vehicle(customer)
-			within ("h1") do 
+			within ("h3") do 
 				expect(page).to have_content("Rafael Flores's Vehicles")
 			end
 		end	

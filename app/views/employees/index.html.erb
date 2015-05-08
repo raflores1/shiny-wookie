@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Employee File</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Middle</th>
+      <th>Last Name</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr id="<%= dom_id(employee) %>">
+        <td><%= employee.firstname %></td>
+        <td><%= employee.middlename %></td>
+        <td><%= employee.lastname %></td>
+        <td><%= link_to 'Show', employee %></td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employee', new_employee_path %>

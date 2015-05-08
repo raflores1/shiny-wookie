@@ -1,0 +1,43 @@
+<%= form_for([@estimate, @lines_in_estimate]) do |f| %>
+  <% if @lines_in_estimate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lines_in_estimate.errors.count, "error") %> prohibited this line from being saved:</h2>
+
+      <ul>
+      <% @lines_in_estimate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <table>
+        <thead>
+            <tr>
+                <th><%=f.label :qty, 'QTY' %></th>
+                <th><%= f.label :category_and_description, 'Description' %></th>
+                <th><%= f.label :price, 'Price' %></th>
+                <th><%= f.label :extended, 'Extended' %></th>
+                <th colspan="3"></th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <div class="field">
+             <td><%= f.number_field :qty %></td>
+          </div>
+          <div class = "field">  
+              <td><%= f.collection_select(:product_id, Product.order(:category), :id, :category_and_description,  prompt: true) %></td>
+          </div>
+          <div class="field">
+              <td><%= f.number_field :price, :value => params[:find_price] %></td>
+          </div>
+          <div class="field">
+              <td><%= f.number_field :extended, :value => params[:find_extended] %></td>
+          </div> 
+        </tr>
+        
+        <div class="actions">
+        <td><%= f.submit %></td>
+        </div>
+        <% end %>

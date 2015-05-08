@@ -23,9 +23,9 @@ describe CustomersController do
   # This should return the minimal set of attributes required to create a valid
   # Customer. As you add validations to Customer, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {"first_name" => "Rafael", "last_name" => "Flores", "addr1" => "Finca Elena",
-                              "addr2" => "32 Calle Jobos", "city" => "Guaynabo", "state" => "PR", "zip" => "00971",
-                              "h_phone" => "7872874630", "c_phone" => "7875258367", "email" => "raflores1@me.com"} }
+  
+  let(:valid_attributes) { {"first_name" => "Rafael", "last_name" => "Flores", 
+    "h_phone" => "7872874630", "c_phone" => "7875258367", "email" => "raflores1@me.com"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -123,7 +123,7 @@ describe CustomersController do
         put :update, {:id => customer.to_param, :customer => valid_attributes}, valid_session
         response.should redirect_to(customer)
       end
-    end
+  end
 
     describe "with invalid params" do
       it "assigns the customer as @customer" do
@@ -158,5 +158,4 @@ describe CustomersController do
       response.should redirect_to(customers_url)
     end
   end
-
 end

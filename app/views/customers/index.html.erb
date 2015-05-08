@@ -7,11 +7,6 @@
     <tr>
       <th>First name</th>
       <th>Last name</th>
-      <th>Addr1</th>
-      <th>Addr2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
       <th>Home Phone</th>
       <th>Mobile Phone</th>
       <th>Email</th>
@@ -24,17 +19,11 @@
       <tr id="<%= dom_id(customer) %>">
         <td><%= customer.first_name %></td>
         <td><%= customer.last_name %></td>
-        <td><%= customer.addr1 %></td>
-        <td><%= customer.addr2 %></td>
-        <td><%= customer.city %></td>
-        <td><%= customer.state %></td>
-        <td><%= customer.zip %></td>
         <td><%= customer.h_phone %></td>
         <td><%= customer.c_phone %></td>
         <td><%= customer.email %></td>
-        <td><%= link_to 'List Vehicles', customer_vehicles_path(customer) %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'New vehicle for this customer', new_customer_vehicle_path(customer) %></td>
+        <td><%= link_to 'Detail', customer %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -44,3 +33,4 @@
 <br>
 
 <%= link_to 'New Customer', new_customer_path %>
+
